@@ -1,0 +1,115 @@
+{
+  "name": "flow-language",
+  "displayName": "Flow Programming Language",
+  "description": "Syntax highlighting and language support for the Flow programming language",
+  "version": "1.0.0",
+  "publisher": "flow-lang",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flow-lang/flow-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:flow",
+    "onCommand:flow.runFile",
+    "onCommand:flow.compileFile",
+    "onCommand:flow.debugFile",
+    "onCommand:flow.openTutorial",
+    "onCommand:flow.openWelcome",
+    "onView:flowWelcomeView"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "flow",
+        "aliases": [
+          "Flow",
+          "flow"
+        ],
+        "extensions": [
+          ".fl"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "flow",
+        "scopeName": "source.flow",
+        "path": "./syntaxes/flow.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "flow",
+        "path": "./snippets/flow.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "flow.runFile",
+        "title": "Flow: Run File"
+      },
+      {
+        "command": "flow.compileFile",
+        "title": "Flow: Build Flow Runtime"
+      },
+      {
+        "command": "flow.debugFile",
+        "title": "Flow: Debug File"
+      },
+      {
+        "command": "flow.openTutorial",
+        "title": "Flow: Open Tutorial"
+      },
+      {
+        "command": "flow.openWelcome",
+        "title": "Flow: Open Welcome Panel"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "flowWelcome",
+          "title": "Flow",
+          "icon": "icon.png"
+        }
+      ]
+    },
+    "views": {
+      "flowWelcome": [
+        {
+          "id": "flowWelcomeView",
+          "name": "Flow Welcome"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Flow",
+      "properties": {
+        "flow.compilerPath": {
+          "type": "string",
+          "default": "flow.exe",
+          "description": "Path to the Flow executable or interpreter used by Flow commands"
+        },
+        "flow.gccPath": {
+          "type": "string",
+          "default": "gcc",
+          "description": "Path to the GCC compiler used for building flow.c"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@vscode/vsce": "^3.9.2",
+    "vsce": "^2.15.0"
+  }
+}
